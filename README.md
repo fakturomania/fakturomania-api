@@ -19,6 +19,7 @@ Pierwszą czynnością, którą należy wykonać jest rejestracja w serwisie **f
 
 > Wszystkie adresy rozpoczynają się z prefixem **https://app.fakturomania.pl**
 > **PUT** i **POST** requesty muszą mieć nagłówek  `Content-Type: application/json`
+> Po zalogowaniu się do requestów dodajemy nagłowek: `Auth-Token: {value}`
 
 #### <i class="icon-file"></i> LOGOWANIE DO SERWISU
 
