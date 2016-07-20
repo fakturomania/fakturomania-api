@@ -354,7 +354,7 @@ RESPONSE BODY
 	  }
 	}
 	
-#### <i class="icon-file"></i> POBIERANIE FAKTURY SPRZEDAŻY
+#### <i class="icon-file"></i> POBIERANIE FAKTURY KOSZTOWEJ
 
 * `GET   /api/v1/purchase/{invoiceId}/pdf `
 	
