@@ -154,65 +154,139 @@ Response body
 * `GET   /api/v1/sale/{invoiceId}/pdf `
 
 
-#### <i class="icon-file"></i> WYSYŁANIE FAKTURY EMAILEM
+#### <i class="icon-file"></i> WYSYŁANIE FAKTURY SPRZEDAŻOWEJ EMAILEM
 
-* `POST   /api/v1/sale/{invoiceId}/pdf/sendViaMail `
+* `POST   /api/v1/sale/pdf/sendViaMail `
 
 Request body
 
     {
-        "email": "john@jogn.com" - email na który wysyłamy
+      "invoiceId": 21,
+      "emails": [
+        {
+          "Email": "email123@gmail.com"
+    
+        },
+        {
+          "Email": "email234@gmail.com"
+        }
+      ]
     }
 
 Response body
 
-	"Pomyślnie wysłano fakturę"
+	"Success"
+	
+#### <i class="icon-file"></i> WYSYŁANIE WIELU FAKTUR SPRZEDAŻOWYCH EMAILEM
+    
+* `POST   /api/v1/sale/pdf/sendManyViaMail `
+
+Request body
+
+    {
+      "invoiceIds": [21,22,23],
+      "emails": [
+        {
+          "Email": "email123@gmail.com"
+    
+        },
+        {
+          "Email": "email234@gmail.com"
+        }
+      ]
+    }
+    
+Response body
+
+    "Success"
+	
+#### <i class="icon-file"></i> FAKTURY KOSZTOWE
+
+
+**INFO** - Faktura kosztowa, to faktura sprzedażowa wystawiania przez Państwa w imieniu podmiotu trzeciego. 
+**KATEGORIE** 
+    
+   TIER I , TIER II, OPIS TIER I, OPIS TIER II, KONTO NA KTÓRYM BĘDZIE KSIĘGOWANE
+
+      1, 1, OPŁATY ZA MEDIA, ENERGIA EKELKTRYCZNA - 402,
+      1, 2, OPŁATY ZA MEDIA, GAZ ,402,
+      1, 3, OPŁATY ZA MEDIA, WODA ,402,
+      1, 4, OPŁATY ZA MEDIA, POZOSTAŁE MEDIA,402,
+    
+      2, 1, PALIWA , OSOBOWE ,402,
+      2, 2, PALIWA, CIĘŻAROWE ,402,
+    
+      3, 0, TELEKOMIKACYJNE,403,
+    
+      4, 0, WARTOŚĆ SPRZEDANYCH TOWARÓW ,731,
+    
+      5, 0, ZUZYCIE MATERIAŁOW I ENERGI ,402,
+    
+      7, 1, PODATKI, OD NIERUCHOMOSCI,404,
+      7, 2, PODATKI, ADMINISTACYJNE,404,
+      7, 3, PODATKI, AKCYZA ,404,
+      7, 4, PODATKI, OD SRODKÓW TRANSPORTU ,404,
+    
+      8, 1, USŁUGI, NAJEM I DZIERŻAWA,
+      8, 2, USŁUGI TRANSPORTOWE,
+      8, 3, USŁUGI USŁUGI DORADCZE, BIUROWE I PRAWNICZE,
+      8, 4, USŁUGI  REMONTY, NAPRAWY, KONSERWACJE,
+      8, 5, USŁUGI UTRZYMANIA CZYSTOŚCI I SANITARNE
+      8, 6, USŁUGI ŁĄCZNOŚCI
+      8, 7, LEASING OPERACYJNY
+      8, 8, USŁUGI NOCLEGOWE O GASTRONOMICZNE
+      8, 9, USŁUGI POZOSTAŁE
+    
+      9, 1, KOSZTY USŁUG BANKOWYCH BIEŻĄCYCH
+      9, 2, OPŁATY ZWIĄZANE Z KREDYTAMI BANKOWYMI
+    
+      11, 0, POZOSTAŁE KOSZTY,407,
 
 #### <i class="icon-file"></i> DODAWANIE FAKTURY KOSZTOWEJ
 
-* `POST   /api/v1/sale`
+* `POST   /api/v1/purchase`
 
 REQUEST BODY
 
-		{
-		  "documentType": "FVZ",
-		  "documentName": "FSK 12\/12\/2016",
-		  "saleDate": 1468944000000,
-		  "issueDate": 1468944000000,
-		  "contractor": {
-		    "contractorId": 179,
-		    "contractorVersionId": 187
-		  },
-		  "categoryId": {
-		    "tier1": 8, - kategoria kosztu
-		    "tier2": 1 - podkategoria kosztu
-		  },
-		  "records": [
-		    {
-		      "ordinal": 1,
-		      "name": "USŁUGA XXX",
-		      "classificationName": "PKWIU",
-		      "classificationCode": "333",
-		      "unit": "nd.",
-		      "quantity": 1,
-		      "netPrice": 123,
-		      "netValue": 123,
-		      "vatRate": "23%",
-		      "vatValue": 28.29,
-		      "grossValue": 151.29
-		    }
-		  ],
-		  "paymentInfo": {
-		    "paymentDeadline": 1468944000000,
-		    "paymentMethod": "CASH",
-		    "paymentStatus": "UNPAID"
-		  },
-		  "comments": "",
-		  "sellerName": "",
-		  "buyerName": "",
-		  "bankName": "lll",
-		  "bankAccountNumber": "33 3333 3333 3333 3333 3333 3333"
-		}
+    {
+      "documentType": "FVZ",
+      "documentName": "FSK 12/12/2016",
+      "saleDate": 1468944000000,
+      "issueDate": 1468944000000,
+      "contractor": {
+        "contractorId": 179,
+        "contractorVersionId": 187
+      },
+      "categoryId": {
+        "tier1": 8, - kategoria kosztu
+        "tier2": 1 - podkategoria kosztu
+      },
+      "records": [
+        {
+          "ordinal": 1,
+          "name": "USŁUGA XXX",
+          "classificationName": "PKWIU",
+          "classificationCode": "333",
+          "unit": "nd.",
+          "quantity": 1,
+          "netPrice": 123,
+          "netValue": 123,
+          "vatRate": "23%",
+          "vatValue": 28.29,
+          "grossValue": 151.29
+        }
+      ],
+      "paymentInfo": {
+        "paymentDeadline": 1468944000000,
+        "paymentMethod": "CASH",
+        "paymentStatus": "UNPAID"
+      },
+      "comments": "",
+      "sellerName": "",
+      "buyerName": "",
+      "bankName": "lll",
+      "bankAccountNumber": "33 3333 3333 3333 3333 3333 3333"
+    }
 
 RESPONSE BODY
 
@@ -279,6 +353,59 @@ RESPONSE BODY
 	    }
 	  }
 	}
+	
+#### <i class="icon-file"></i> POBIERANIE FAKTURY SPRZEDAŻY
+
+* `GET   /api/v1/purchase/{invoiceId}/pdf `
+	
+#### <i class="icon-file"></i> WYSYŁANIE FAKTURY KOSZTOWEJ EMAILEM
+
+* `POST   /api/v1/purchase/pdf/sendViaMail `
+
+Request body
+
+    {
+      "invoiceId": 21,
+      "emails": [
+        {
+          "Email": "email123@gmail.com"
+    
+        },
+        {
+          "Email": "email234@gmail.com"
+        }
+      ]
+    }
+
+Response body
+
+    "Success"
+    
+#### <i class="icon-file"></i> WYSYŁANIE WIELU FAKTUR KOSZTOWYCH EMAILEM
+    
+* `POST   /api/v1/purchase/pdf/sendManyViaMail `
+
+Request body
+
+    {
+      "invoiceIds": [21,22,23],
+      "emails": [
+        {
+          "Email": "email123@gmail.com"
+    
+        },
+        {
+          "Email": "email234@gmail.com"
+        }
+      ]
+    }
+    
+Response body
+
+    "Success"
+    
+
+    
 
 #### <i class="icon-file"></i> POBIERANIE KONTRAHENTA
 
@@ -362,3 +489,6 @@ Response body
 	
 
 ----------
+
+W RAZIE PYTAŃ MAIL: pomoc@fakturomania.pl
+TELEFON: 510-452-541 (w godzinach rozsądnych)
