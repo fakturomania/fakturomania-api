@@ -6,7 +6,7 @@ FAKTUROMANIA DOCS!
 INSTRUKCJA
 -------------
 
-Pierwszą czynnością, którą należy wykonać jest rejestracja w serwisie **fakturomania.pl** przy pomocy emaila oraz hasła. Jest to niezbędne w celu integracji w API. Po stworzeniu konta można korzystać z endpointów:
+Pierwszą czynnością, którą należy wykonać jest rejestracja w serwisie **https://fakturomania.pl** przy pomocy emaila oraz hasła. Jest to niezbędne w celu integracji w API. Po stworzeniu konta można korzystać z endpointów:
 
 
 > **CZYNNOŚCI WSTĘPNE:**
@@ -280,6 +280,25 @@ RESPONSE BODY
 	  }
 	}
 
+#### <i class="icon-file"></i> POBIERANIE KONTRAHENTA
+
+* `GET   /contractors/{contractorId} `
+
+Response body
+
+	{
+	  "contractorId": 101,
+	  "contractorVersionId": 117,
+	  "created": 1469008248023,
+	  "modified": 1469008248023,
+	  "name": "FIRMA TESTOWA",
+	  "nip": "644-340-68-04",
+	  "street": "ul. gen. Stefana Grota-Roweckiego 38",
+	  "street2": "",
+	  "postalCode": "41-214",
+	  "postalCity": "Sosnowiec"
+	}
+
 
 #### <i class="icon-file"></i> ZAPISYWANIE KONTRAHENTA
 
@@ -309,6 +328,36 @@ Response body
 	  "street2": "",
 	  "postalCode": "05-825",
 	  "postalCity": "GRODZISK MAZOWIECKI"
+	}
+	
+#### <i class="icon-file"></i> EDYCJA KONTRAHENTA
+
+* `PUT   /contractors/{contractorId} `
+
+Request body
+
+    {
+      "name": "FIRMA TESTOWA",
+      "nip": "644-340-68-04",
+      "street": "ul. gen. Stefana Grota-Roweckiego 38",
+      "street2": "",
+      "postalCode": "41-214",
+      "postalCity": "Sosnowiec"
+    }
+	
+Response body
+
+	{
+	  "contractorId": 101,
+	  "contractorVersionId": 119,
+	  "created": 1469008254703,
+	  "modified": 1469008254703,
+	  "name": "FIRMA TESTOWA",
+	  "nip": "644-340-68-04",
+	  "street": "ul. gen. Stefana Grota-Roweckiego 38",
+	  "street2": "",
+	  "postalCode": "41-214",
+	  "postalCity": "Sosnowiec"
 	}
 	
 
