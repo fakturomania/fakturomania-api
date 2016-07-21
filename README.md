@@ -487,6 +487,30 @@ Response body
 	  "postalCity": "Sosnowiec"
 	}
 	
+#### <i class="icon-file"></i> SPRAWDZANIE CZY KONTRAHENT JEST W BAZIE
+
+* `GET  /contractors/nip/{nip} `
+
+Response body
+ 
+    {
+      "contractorId": 102,
+      "contractorVersionId": 102,
+      "created": 1469090000092,
+      "modified": 1469090000092,
+      "name": "\"ARKOM\" SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+      "nip": "839-112-19-69",
+      "street": "ul. Marii Zaborowskiej 29",
+      "street2": "",
+      "postalCode": "76-200",
+      "postalCity": "Słupsk"
+    }
+    
+LUB
+
+    404 Not Found
+
+**NIP** Nip w formacie xxx-xxx-xx-xx -> np. /contractors/nip/839-112-19-69
 
 ----------
 
